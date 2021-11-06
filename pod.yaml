@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: task8
+  name: task8
+spec:
+  containers:
+  - image: ubuntu/nginx
+    name: task8
+    env:
+    - name: K8S_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: app-secret
+          key: K8S_USERNAME
+    - name: K8S_PASSWD
+      valueFrom:
+        secretKeyRef:
+          name: app-secret
+          key: K8S_PASSWD
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

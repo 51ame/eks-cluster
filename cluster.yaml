@@ -1,0 +1,16 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata: 
+  name: task8-cluster
+  region: eu-central-1
+vpc:
+  subnets:
+    public:
+      eu-central-1a: { id: subnet-08286f40906c440d6 }
+      eu-central-1b: { id: subnet-06e9edf6d91385dbf }
+managedNodeGroups:
+- name: worker-group-1
+  instanceType: t2.small
+  desiredCapacity: 1
+  labels: { role: worker1}
+  volumeSize: 8
